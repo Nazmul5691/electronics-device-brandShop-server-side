@@ -79,6 +79,23 @@ async function run() {
         res.send(result)
       })
 
+      app.get('/productsData/:brandsName', async (req, res) => {
+        const brandName = req.params.brandsName;
+        const query = { brandsName: brandName };
+        const cursor = allProducts.find(query);
+        const products = await cursor.toArray();
+        res.send(products);
+    });
+
+
+    app.get('/productData/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)}
+        const result = await allProducts.findOne(query)
+        res.send(result)
+  });
+
+
 
       // user api
      
