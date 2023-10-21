@@ -87,6 +87,7 @@ async function run() {
         res.send(products);
     });
 
+    
 
     app.get('/productData/:id', async (req, res) => {
       const id = req.params.id;
@@ -97,13 +98,14 @@ async function run() {
 
 
 
-      // user api
+     
      
       app.get('/user', async (req, res) => {
         const cursor = userCollection.find();
         const users = await cursor.toArray();
         res.send(users);
       })
+
 
       app.post('/user', async (req, res) => {
           const user = req.body;
@@ -140,7 +142,7 @@ async function run() {
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
-    // Ensures that the client will close when you finish/error
+    
     // await client.close();
   }
 }
